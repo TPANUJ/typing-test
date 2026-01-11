@@ -26,25 +26,28 @@ function randomPara() {
 }
 
 
-randomPara(); 
+
 
 let counter
+let youcanwrite = document.getElementById("input")
+
 
 function starttimer() {
-  
-counter = 6
 
+counter = 6
 setInterval(function timer() {
 if (counter >= 0) {
   counter--
   document.querySelector(".speed").innerHTML = counter
+  youcanwrite.disabled = false
 }  
 if (counter === 0) {
   addpara()
 }
+if (counter <= 0) {
+  youcanwrite.disabled  = true; 
+}
 },1000)
-
-
 }
 
 
