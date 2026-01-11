@@ -4,6 +4,7 @@ const paragraphs = ["Education is very important in our life. It helps us gain k
                      "Healthy food is necessary for a strong body and mind. It gives us energy to work and study properly. Fruits, vegetables, grains, and proteins help our body grow and stay fit. Eating healthy food improves digestion and boosts immunity. It also helps prevent diseases and keeps our weight under control. Junk food may taste good, but it is harmful if eaten regularly. Drinking enough water is also important for good health. By choosing healthy food every day, we can live a long, active, and happy life.",
                      "Technology plays an important role in our daily life. It makes our work easier and faster. With the help of technology, we can communicate with people anywhere in the world. Mobile phones and the internet help us learn new things. Students use technology for online classes and projects. Technology is also useful in healthcare, education, and business. However, too much use of technology can be harmful. We should use it wisely and for good purposes. When used properly, technology helps in progress and development."
 ]
+const typingpara = []
  let randomparaindex
 function randomPara() {
    
@@ -23,6 +24,8 @@ function randomPara() {
     } else {randomparaindex = 0;
     }
   document.querySelector(".para").innerHTML = paragraphs[randomparaindex]
+  typingpara.push(paragraphs[randomparaindex])
+  console.log(typingpara);
 }
 
 
