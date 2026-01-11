@@ -26,6 +26,38 @@ function randomPara() {
 }
 
 
+randomPara(); 
 
+let counter
+
+function starttimer() {
+  
+counter = 6
+
+setInterval(function timer() {
+if (counter >= 0) {
+  counter--
+  document.querySelector(".speed").innerHTML = counter
+}  
+if (counter === 0) {
+  addpara()
+}
+},1000)
+
+
+}
+
+
+
+let inputarr = []
+let inputvalue
+
+function addpara() {
+
+ inputvalue = document.getElementById("input")
+ inputarr.push(inputvalue.value)
+ console.log(inputarr);
+ 
+}
 
 
