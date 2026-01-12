@@ -7,11 +7,30 @@
 </head>
 <link rel="stylesheet" href="typing.css">
 <body>
-    <div class="para"></div>
-    <button onclick="randomPara()">Generate random paragraph</button>
-    <input type="text" id="input" placeholder="Please type here">
-    <button id="start" onclick="starttimer() ">Start</button>
-    <p class="speed">WPM: </p>
+  <div class="container">
+  <h1 class="heading">Check Your Speed and Accuracy</h1>
+
+  <p class="speed">Timer</p>
+
+  <div class="para" id="paragraph">
+    Click "Generate" to get a paragraph then "start" will enable
+  </div>
+
+  <div class="controls">
+    <button type="button" onclick="randomPara()">Generate</button>
+    <button type="button" id="start" onclick="starttimer()" >Start Test</button>
+  </div>
+
+  <input
+    type="text"
+    id="input"
+    placeholder="Click start to type"
+    autocomplete="off"
+    
+  >
+</div>
+
+    
     <script src="typing.js"></script>
 </body>
 </html>

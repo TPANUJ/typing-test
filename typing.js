@@ -1,11 +1,16 @@
-const paragraphs = ["Education is very important in our life. It helps us gain knowledge, skills, and confidence. Through education, we learn how to read, write, and think clearly. It teaches us discipline and good values. Education helps people get better jobs and live a better life. It also helps us understand the world around us and make good decisions. An educated person can help their family and society grow. Schools and colleges play a big role in shaping our future. Education is not only about books, but also about learning how to be a good human being.",
-                     "My daily routine is simple and well organized. I wake up early in the morning and brush my teeth. After that, I exercise for some time to stay healthy. I take a bath and eat breakfast. Then I go to college and attend my classes. I listen carefully to my teachers and take notes. In the evening, I return home and rest for a while. Later, I study, complete my homework, and practice coding. At night, I have dinner with my family and go to bed on time.",
-                     "Friendship is a beautiful part of life. A true friend supports us in good and bad times. Friends make us feel happy and less lonely. We share our thoughts, problems, and dreams with them. A good friend gives honest advice and helps us improve ourselves. Friendship teaches us trust, care, and understanding. Spending time with friends reduces stress and brings joy. True friendship is based on respect and loyalty. Life becomes more meaningful when we have friends who stand by us and encourage us to do better.",
-                     "Healthy food is necessary for a strong body and mind. It gives us energy to work and study properly. Fruits, vegetables, grains, and proteins help our body grow and stay fit. Eating healthy food improves digestion and boosts immunity. It also helps prevent diseases and keeps our weight under control. Junk food may taste good, but it is harmful if eaten regularly. Drinking enough water is also important for good health. By choosing healthy food every day, we can live a long, active, and happy life.",
-                     "Technology plays an important role in our daily life. It makes our work easier and faster. With the help of technology, we can communicate with people anywhere in the world. Mobile phones and the internet help us learn new things. Students use technology for online classes and projects. Technology is also useful in healthcare, education, and business. However, too much use of technology can be harmful. We should use it wisely and for good purposes. When used properly, technology helps in progress and development."
-]
+const paragraphs = [
+  "Education plays an important role in our life and helps us gain knowledge and confidence. It teaches discipline values and skills needed for success. Through learning we understand the world better and make correct decisions. Education improves career opportunities and helps society grow stronger and progress together.",
+  "A healthy lifestyle keeps our body active and mind fresh every day. Eating balanced food exercising regularly and sleeping well are important habits. Drinking enough water reduces tiredness and improves focus. When we take care of health we feel energetic productive and happy in daily life.",
+  "Technology has become an essential part of modern life and daily activities. It helps people communicate learn and work efficiently. Students use technology for studies projects and research. When used wisely technology saves time increases productivity and supports growth in education healthcare and business sectors.",
+  "Friendship adds happiness and meaning to our lives and relationships. True friends support us during difficult times and celebrate success together. Sharing thoughts emotions and experiences builds trust and understanding. Good friendship reduces stress boosts confidence and helps us become better individuals in life.",
+  "Hard work and consistency are key factors for achieving success in any field. Small daily efforts create big results over time. Patience discipline and focus help overcome challenges. When we stay motivated and never give up we move closer to goals and self improvement."
+];
+
 const typingpara = []
  let randomparaindex
+ let startenabling = document.getElementById("start");
+ startenabling.disabled = true
+
 function randomPara() {
    
     const randomnumber = Math.random();
@@ -25,7 +30,8 @@ function randomPara() {
     }
   document.querySelector(".para").innerHTML = paragraphs[randomparaindex]
   typingpara.push(paragraphs[randomparaindex])
-  console.log(typingpara);
+  startenabling.disabled = false
+  
 }
 
 
@@ -33,11 +39,16 @@ function randomPara() {
 
 let counter
 let youcanwrite = document.getElementById("input")
+let inputfield
 
 
 function starttimer() {
+ 
+  inputfield = document.getElementById("input");
+  inputfield.value = ''
+  inputfield.focus();
 
-counter = 6
+counter = 15
 setInterval(function timer() {
 if (counter >= 0) {
   counter--
@@ -63,7 +74,33 @@ function addpara() {
  inputvalue = document.getElementById("input")
  inputarr.push(inputvalue.value)
  console.log(inputarr);
- 
+ compare()
 }
 
+function compare() {
+ const originalWords = typingpara[0].toLowerCase().split(" ");
+  const typedWords = inputarr[0].toLowerCase().split(" ");
+
+  let correct = 0;
+  let wrong = 0;
+  let accuracy
+  let speed
+
+  const maxLength = Math.max(originalWords.length, typedWords.length);
+
+  for (let i = 0; i < maxLength; i++) {
+    if (typedWords[i] === undefined) {
+      wrong++; 
+    } else if (originalWords[i] === typedWords[i]) {
+      correct++;
+    } else {
+      wrong++;
+    }
+  }
+
+accuracy = ((correct/typedWords.length)*100).toFixed(2)
+speed = (typedWords.length * 4)
+
+alert(`accuracy = ${accuracy} % and speed = ${speed}` )  
+}
 
